@@ -1,0 +1,39 @@
+shell = "bash -c '{}'"
+
+[[items]]
+file="~/.Xresources"
+template="xresources"
+hook="xrdb ~/.Xresources"
+start="! Start flavours"
+end="!End flavours"
+
+[[items]]
+file="~/.config/i3/config"
+template="i3"
+subtemplate="client-properties"
+hook="i3-msg restart"
+
+[[items]]
+file="~/.config/alacritty/alacritty.yml"
+template="alacritty"
+hook="alacritty reset"
+
+[[items]]
+file = "~/.config/rofi/config.rasi"
+template = "rofi"
+subtemplate = "colors"
+start= "/* Start flavours */"
+end = "/* End flavours */"
+
+[[items]]
+file = "~/.config/beautifuldiscord/style.css"
+template = "styles"
+subtemplate = "css-variables"
+# What if the configuration doesn't support '#' comments? Just change them!
+start= "/* Start flavours */"
+end = "/* End flavours */"
+
+# [[items]]
+# file = "~/.config/spicetify/Themes/base16/color.ini"
+# template = "spotify"
+# rewrite = true
