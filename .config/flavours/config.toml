@@ -5,7 +5,7 @@ file="~/.Xresources"
 template="xresources"
 hook="xrdb ~/.Xresources"
 start="! Start flavours"
-end="!End flavours"
+end="! End flavours"
 
 [[items]]
 file="~/.config/i3/config"
