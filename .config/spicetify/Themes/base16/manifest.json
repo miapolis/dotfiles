@@ -1,0 +1,6 @@
+{
+    "name": "base16",
+    "description": "base16",
+    "schemes": "color.ini",
+    "include": []
+}
