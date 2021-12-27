@@ -43,7 +43,7 @@ font-5 = MaterialIcons:size=10;2
 font-6 = "SF Pro:size=10;2"
 
 modules-left = i3 xwindow
-modules-center = date
+modules-center = date spotify spotify-prev spotify-play-pause spotify-next
 modules-right = cpu memory network-wlan pulseaudio backlight battery-internal power-menu separator
 
 tray-position = right
@@ -75,10 +75,10 @@ index-sort = true
 wrapping-scroll = false
 
 ws-icon-0 = 1; 
-ws-icon-1 = 2;
-ws-icon-2 = 3; 
-ws-icon-3 = 4;
-ws-icon-4 = 5;5
+ws-icon-1 = 2;2
+ws-icon-2 = 3; 
+ws-icon-3 = 4;
+ws-icon-4 = 5;
 ws-icon-5 = 6;
 ws-icon-6 = 7;7
 ws-icon-7 = 8;8
@@ -159,6 +159,35 @@ bar-fill-foreground = #9f78e1
 bar-empty = ─
 bar-empty-font = 2
 bar-empty-foreground = ${colors.foreground-alt}
+
+[module/spotify]
+type = custom/script
+tail = true
+; prefix symbol is shown before the text
+format-prefix = " "
+format = <label>
+exec = ~/.config/polybar/scripts/scroll_spotify_status.sh
+
+[module/spotify-prev]
+type = custom/script
+exec = echo "<previous-song-symbol>"
+label = "玲"
+format = <label>
+click-left = playerctl previous -p spotify
+
+[module/spotify-play-pause]
+type = custom/ipc
+hook-0 = echo ""
+hook-1 = echo ""
+initial = 1
+click-left = playerctl play-pause -p spotify
+
+[module/spotify-next]
+type = custom/script
+exec = echo "next-song-symbol"
+label="怜"
+format = <label>
+click-left = playerctl next -p spotify
 
 [module/cpu]
 type = internal/cpu
