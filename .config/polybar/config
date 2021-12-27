@@ -164,7 +164,8 @@ bar-empty-foreground = ${colors.foreground-alt}
 type = custom/script
 tail = true
 ; prefix symbol is shown before the text
-format-prefix = " "
+format-prefix = "  "
+format-prefix-foreground = ${colors.secondary}
 format = <label>
 exec = ~/.config/polybar/scripts/scroll_spotify_status.sh
 

@@ -8,12 +8,6 @@ start="! Start flavours"
 end="! End flavours"
 
 [[items]]
-file="~/.config/i3/config"
-template="i3"
-subtemplate="client-properties"
-hook="i3-msg restart"
-
-[[items]]
 file="~/.config/alacritty/alacritty.yml"
 template="alacritty"
 hook="alacritty reset"
@@ -29,3 +23,9 @@ end = "/* End flavours */"
 file = "~/.config/spicetify/Themes/base16/color.ini"
 template = "spotify"
 rewrite = true
+
+[[items]]
+file="~/.config/i3/config"
+template="i3"
+subtemplate="client-properties"
+hook="i3-msg restart"
