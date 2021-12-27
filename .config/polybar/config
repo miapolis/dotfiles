@@ -34,15 +34,16 @@ line-color = #bf616a
 
 module-margin-left = 1
 module-margin-right = 1
+
 font-0 = "Liga SFMono Nerd Font:size=10;2"
 font-1 = "Font Awesome 5 Brands Regular:style=Regular:size=10;2"
 font-2 = "Font Awesome 5 Free Regular:style=Regular:size=10;2"
 font-3 = "Font Awesome 5 Free Solid:style=Solid:size=10;2"
-font-4 = MaterialIcons:size=10;2
-font-5 = "SF Pro:size=10;2"
+font-5 = MaterialIcons:size=10;2
+font-6 = "SF Pro:size=10;2"
 
 modules-left = i3 xwindow
-modules-center = date mpd
+modules-center = date
 modules-right = cpu memory network-wlan pulseaudio backlight battery-internal power-menu separator
 
 tray-position = right
@@ -116,23 +117,30 @@ label-urgent-padding = 4
 ; Separator in between workspaces
 ; label-separator = |
 
-
 [module/mpd]
 type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+
+host = 127.0.0.1
+port = 6600
+
+format-online = <icon-prev> <icon-stop> <toggle> <icon-next> <label-song>
+format-online-foreground = ${colors.secondary}
+
+format-offline = <label-offline>
+label-offline = bad
 
 ;icon-prev = 
 ;icon-stop = 
-icon-play = 
+;icon-play = 
 ;icon-pause = 
 ;icon-next = 
-;icon-play = ⏵
-icon-pause = ⏸
-icon-stop = ⏹
-icon-prev = ⏮
-icon-next = ⏭
+icon-play =
+icon-pause =
+icon-stop =
+icon-prev =玲
+icon-next =怜
 
-label-song-maxlen = 25
+label-song-maxlen = 40
 label-song-ellipsis = true
 
 [module/xbacklight]
