@@ -18,10 +18,11 @@ configuration {
 }
 
 * {
-    background:                     #00000060;
+    background:                     #00000080;
     background-alt:              	#00000000;
     background-bar:                 #f2f2f215;
     foreground:                     #f2f2f2EE;
+    foreground-muted:		    #f2f2f280;
     accent:			            	#ffffff66;
 }
 
@@ -38,19 +39,19 @@ window {
 
 prompt {
     enabled: 						true;
-	padding: 						0.30% 1% 0% -0.5%;
+	padding: 						0% 0.75% 0% -0.25%;
 	background-color: 				@background-alt;
 	text-color: 					@foreground;
-	font:							"FantasqueSansMono Nerd Font 12";
+	font:							"Liga SFMono Nerd Font 12";
 }
 
 entry {
     background-color:               @background-alt;
     text-color:                     @foreground;
-    placeholder-color:              @foreground;
+    placeholder-color:              @foreground-muted;
     expand:                         true;
     horizontal-align:               0;
-    placeholder:                    "Search";
+    placeholder:                    "imagine reading this";
     padding:                        0.10% 0% 0% 0%;
     blink:                          true;
 }
@@ -69,7 +70,7 @@ inputbar {
 
 listview {
     background-color:               @background-alt;
-    columns:                        7;
+    columns:                        8;
     lines:                          4;
     spacing:                        2%;
     cycle:                          false;

@@ -44,11 +44,12 @@ font-6 = "SF Pro:size=10;2"
 
 modules-left = i3 xwindow
 modules-center = date spotify spotify-prev spotify-play-pause spotify-next
-modules-right = cpu memory network-wlan pulseaudio backlight battery-internal power-menu separator
+modules-right = cpu memory temperature xkeyboard pulseaudio mic-volume backlight battery-internal power-menu separator
 
 tray-position = right
 tray-padding = 2
 ;tray-background = #0063ff
+tray-foreground = ${colors.secondary}
 
 wm-restack = i3
 
@@ -204,6 +205,46 @@ format-prefix-foreground = ${colors.icon}
 format-prefix=" "
 label = %percentage_used%%
 
+[module/temperature]
+type = internal/temperature
+
+format-prefix = " "
+format-prefix-foreground = ${colors.icon}
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 0.5
+
+; Thermal zone to use
+; To list all the zone types, run 
+; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
+; Default: 0
+thermal-zone = 0
+
+; Full path of temperature sysfs path
+; Use `sensors` to find preferred temperature source, then run
+; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
+; to find path to desired file
+; Default reverts to thermal zone setting
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon6/temp1_input
+
+; Base temperature for where to start the ramp (in degrees celsius)
+; Default: 0
+base-temperature = 20
+
+; Threshold temperature to display warning label (in degrees celsius)
+; Default: 80
+warn-temperature = 60
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+ 
+format-prefix = "  "
+format-prefix-foreground = ${colors.icon}
+ 
+label-layout = %layout%
+
 [module/network-wlan]
 type = internal/network
 interface = wlp0s20f3
@@ -351,6 +392,7 @@ format-muted = <label-muted>
 ;   %percentage% (default)
 ;   %decibels% (unreleased)
 label-muted = MUTE
+label-muted-underline = ${colors.secondary}
 ;label-muted-foreground = #666
 
 ; Only applies if <ramp-volume> is used
@@ -364,6 +406,19 @@ ramp-volume-2-foreground = "${colors.icon}"
 ; Right and Middle click (unreleased)
 click-right = pavucontrol &
 ; click-middle = 
+
+[module/mic-volume]
+type = custom/script
+interval = 1
+format-prefix = " "
+format-prefix-foreground = ${colors.icon}
+format = <label>
+exec = bash ~/.config/polybar/scripts/mic-volume.sh show-vol
+
+; Control actions (using pactl)
+click-left = bash ~/.config/polybar/scripts/mic-volume.sh mute-vol
+scroll-up = bash ~/.config/polybar/scripts/mic-volume.sh inc-vol
+scroll-down = bash ~/.config/polybar/scripts/mic-volume.sh dec-vol
 
 [module/backlight]
 type = internal/backlight
@@ -420,16 +475,18 @@ expand-right = true
 
 menu-0-0 ="|"
 menu-0-0-exec =
-menu-0-1 ="%{F#676E95}%{F-}"
+menu-0-1 =""
+menu-0-1-foreground = ${colors.secondary}
 menu-0-1-exec = systemctl suspend 
-menu-0-2 = "%{F#676E95}%{F-}"
+menu-0-2 = ""
+menu-0-2-foreground = ${colors.secondary}
 menu-0-2-exec = reboot
-menu-0-3 = "%{F#676E95}%{F-}"
+menu-0-3 = ""
+menu-0-3-foreground = ${colors.secondary}
 menu-0-3-exec = shutdown now
-menu-0-4 = "%{F#676E95}%{F-}"
-menu-0-4-exec = betterlockscreen -l 
-
-
+menu-0-4 = ""
+menu-0-4-foreground = ${colors.secondary}
+menu-0-4-exec = betterlockscreen -l dimblur
 
 ; Available tags:
 ;   <label-toggle> (default) - gets replaced with <label-(open|close)>
@@ -440,9 +497,11 @@ menu-0-4-exec = betterlockscreen -l
 ; the definition for <label-open>
 format =<menu>  <label-toggle>
 
-label-open = "%{F#676E95}%{F-}"
+label-open = ""
+label-open-foreground = ${colors.secondary}
 
-label-close = "%{F#676E95}%{F-}"
+label-close = ""
+label-close-foreground = ${colors.secondary}
 
 ; Optional item separator
 ; Default: none
