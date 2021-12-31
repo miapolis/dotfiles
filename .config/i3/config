@@ -238,6 +238,7 @@ gaps inner 10
 gaps outer 10
 
 default_border pixel 0
+for_window [class=".*"] border pixel 0
 border_radius 10
 
 # ####################
