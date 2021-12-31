@@ -1,5 +1,6 @@
 [colors]
-background = ${xrdb:background}
+background = aa0b1c2c
+; TODO: allow for transparency in background without hard-coding
 background-alt = ${xrdb:color8}
 second-background = #34324A
 foreground = ${xrdb:foreground}
