@@ -19,6 +19,7 @@ subtemplate = 'default'
 rewrite = false
 start = '# Start flavours'
 end = '# End flavours'
+hook = 'killall dunst && dunst'
 
 [[items]]
 file = "~/.config/beautifuldiscord/style.css"
