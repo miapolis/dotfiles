@@ -47,6 +47,12 @@ exec_always --no-startup-id picom --experimental-backend &
 exec_always --no-startup-id "setxkbmap -layout us,es"
 exec_always --no-startup-id "setxkbmap -option 'grp:alt_shift_toggle'"
 
+# Notification daemon
+exec killall dunst && dunst
+
+# Clipboard daemon
+exec --no-startup-id greenclip daemon
+
 # Start polybar
 exec_always ~/.config/polybar/launch.sh
 
@@ -71,7 +77,7 @@ bindsym XF86AudioPrev exec playerctl previous
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id alacritty
+bindsym $mod+Return exec --no-startup-id WINIT_X11_SCALE_FACTOR=1 alacritty
 
 # kill focused window
 bindsym $mod+q kill
@@ -227,6 +233,10 @@ exec xrandr --output eDP-1-1 --right-of HDMI-0 --auto
 bindsym $mod+Shift+N exec sudo nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
 
 bindsym $mod+Shift+P exec flameshot gui
+
+bindsym $mod+Shift+H exec dunstctl history-pop
+
+bindsym $mod+Shift+V exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
 bindsym $mod+i exec vivaldi-stable
 

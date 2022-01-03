@@ -12,6 +12,14 @@ file="~/.config/alacritty/alacritty.yml"
 template="alacritty"
 hook="alacritty reset"
 
+[[item]]
+file = '~/.config/dunst/dunstrc'
+template = 'dunst'
+subtemplate = 'default'
+rewrite = false
+start = '# Start flavours'
+end = '# End flavours'
+
 [[items]]
 file = "~/.config/beautifuldiscord/style.css"
 template = "styles"
