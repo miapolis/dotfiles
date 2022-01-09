@@ -218,6 +218,9 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Floating window border configuration
+new_float none
+
 # Start flavours
 # Basic color configuration using the Base16 variables for windows and borders.
 # Property Name         Border  BG      Text    Indicator Child Border
