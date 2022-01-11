@@ -43,6 +43,9 @@ exec --no-startup-id nm-applet
 # Start Picom compositor
 exec_always --no-startup-id picom --experimental-backend &
 
+# Start authentication agent
+exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
+
 # Set keyboard layouts
 exec_always --no-startup-id "setxkbmap -layout us,es"
 exec_always --no-startup-id "setxkbmap -option 'grp:alt_shift_toggle'"
@@ -257,6 +260,9 @@ default_border pixel 0
 for_window [class="Vivaldi"] border pixel 0
 
 border_radius 10
+
+# Specific windows
+for_window [class="Gnome-calculator"] floating enable
 
 # ####################
 # STARTUP APPLICATIONS
